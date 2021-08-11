@@ -7,6 +7,11 @@ variable "vcn_id" {
   type        = string
   default     = null
 }
+variable "network_compartment_id" {
+  description = "compartment OCID where the existing network lives"
+  type        = string
+  default     = null
+}
 
 
 # Identity and access parameters

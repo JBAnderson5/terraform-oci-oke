@@ -176,7 +176,7 @@ module "network" {
   source = "./modules/okenetwork"
 
   # general oci parameters
-  compartment_id = var.compartment_id
+  compartment_id = var.network_compartment_id
   label_prefix   = var.label_prefix
 
   # oke networking parameters
