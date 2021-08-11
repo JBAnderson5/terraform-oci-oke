@@ -25,6 +25,7 @@ module "base" {
 
 */
 
+#replacing base module with vcn, bastion, and operator modules. moving rest of logic in base into OKE including datatsources
 module "vcn" {
   source  = "../terraform-oci-vcn"
   #version = "2.3.0"
@@ -37,6 +38,8 @@ module "vcn" {
   label_prefix   = var.label_prefix
   tags           = var.tags["vcn"]
 
+  #new VCN ID param to load a vcn
+  vcn_id                   = var.vcn_id
   # vcn parameters
   create_drg               = var.create_drg
   drg_display_name         = var.drg_display_name
@@ -206,7 +209,7 @@ module "oke" {
   label_prefix   = var.label_prefix
 
   # region parameters
-  ad_names = module.base.ad_names #TODO: fix this
+  ad_names = sort(data.template_file.ad_names.*.rendered) #module.base.ad_names #TODO: did it work?
   region   = var.region
 
   # ssh keys
@@ -246,4 +249,15 @@ module "oke" {
 
   node_pools_to_drain = var.node_pools_to_drain
 
+}
+
+
+#moving logic from depreciated base module
+data "oci_identity_availability_domains" "ad_list" {
+  compartment_id = var.tenancy_id
+}
+
+data "template_file" "ad_names" {
+  count    = length(data.oci_identity_availability_domains.ad_list.availability_domains)
+  template = lookup(data.oci_identity_availability_domains.ad_list.availability_domains[count.index], "name")
 }

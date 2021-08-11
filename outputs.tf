@@ -47,6 +47,7 @@ output "operator_private_ip" {
 }
 
 #TODO: move this logic from base module in datasources.tf
+/* skipping for now
 output "ssh_to_operator" {
   description = "convenient command to ssh to the operator host"
   value       = module.operator.ssh_to_operator
@@ -57,6 +58,7 @@ output "ssh_to_bastion" {
   description = "convenient command to ssh to the bastion host"
   value       = module.bastion.ssh_to_bastion
 }
+*/
 
 output "kubeconfig" {
   description = "convenient command to set KUBECONFIG environment variable before running kubectl locally"
