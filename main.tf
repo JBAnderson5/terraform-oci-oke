@@ -161,7 +161,7 @@ module "policies" {
 
   operator = local.oke_operator
 
-  dynamic_group = module.operator.group_name
+  dynamic_group = module.bastion.group_name
 
   oke_kms = local.oke_kms
 

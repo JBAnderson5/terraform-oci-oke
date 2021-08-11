@@ -46,11 +46,13 @@ output "operator_private_ip" {
   value       = module.operator.operator_private_ip
 }
 
+#TODO: move this logic from base module in datasources.tf
 output "ssh_to_operator" {
   description = "convenient command to ssh to the operator host"
   value       = module.operator.ssh_to_operator
 }
 
+#TODO: move this logic from base module in datasources.tf
 output "ssh_to_bastion" {
   description = "convenient command to ssh to the bastion host"
   value       = module.bastion.ssh_to_bastion
