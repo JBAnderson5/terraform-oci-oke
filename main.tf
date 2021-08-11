@@ -164,7 +164,7 @@ module "policies" {
 
   operator = local.oke_operator
 
-  dynamic_group = module.bastion.group_name
+  dynamic_group = module.operator.operator_instance_principal_group_name #module.bastion.group_name #moving logic from base module
 
   oke_kms = local.oke_kms
 
