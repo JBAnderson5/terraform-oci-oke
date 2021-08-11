@@ -34,7 +34,7 @@ module "vcn" {
   region = var.region
 
   # general oci parameters
-  compartment_id = var.compartment_id #TODO: should we change this to refer to network compartment?
+  compartment_id = var.network_compartment_id #TODO: should we change this to refer to network compartment?
   label_prefix   = var.label_prefix
   tags           = var.tags["vcn"]
 
@@ -176,7 +176,7 @@ module "network" {
   source = "./modules/okenetwork"
 
   # general oci parameters
-  compartment_id = var.network_compartment_id
+  compartment_id = var.compartment_id
   label_prefix   = var.label_prefix
 
   # oke networking parameters
