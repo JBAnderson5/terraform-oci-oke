@@ -161,7 +161,7 @@ module "policies" {
 
   operator = local.oke_operator
 
-  dynamic_group = module.base.group_name
+  dynamic_group = module.operator.group_name
 
   oke_kms = local.oke_kms
 
@@ -206,7 +206,7 @@ module "oke" {
   label_prefix   = var.label_prefix
 
   # region parameters
-  ad_names = module.base.ad_names
+  ad_names = module.base.ad_names #TODO: fix this
   region   = var.region
 
   # ssh keys
