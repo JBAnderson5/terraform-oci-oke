@@ -176,7 +176,7 @@ module "network" {
   source = "./modules/okenetwork"
 
   #being created before vcn is loaded. trying to fix with dependency
-  depends_on = [module.vcn]
+  depends_on = [module.vcn,]
 
   # general oci parameters
   compartment_id = var.network_compartment_id
@@ -206,6 +206,8 @@ module "network" {
 # cluster creation for oke
 module "oke" {
   source = "./modules/oke"
+
+  depends_on [module.vcn,]
 
   # general oci parameters
   compartment_id = var.compartment_id
