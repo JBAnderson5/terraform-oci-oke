@@ -175,6 +175,9 @@ module "policies" {
 module "network" {
   source = "./modules/okenetwork"
 
+  #being created before vcn is loaded. trying to fix with dependency
+  depends_on = [module.vcn]
+
   # general oci parameters
   compartment_id = var.network_compartment_id
   label_prefix   = var.label_prefix
