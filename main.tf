@@ -207,7 +207,7 @@ module "network" {
 module "oke" {
   source = "./modules/oke"
 
-  depends_on [module.vcn,]
+  depends_on = [module.vcn,]
 
   # general oci parameters
   compartment_id = var.compartment_id
