@@ -40,6 +40,8 @@ module "vcn" {
 
   #new VCN ID param to load a vcn
   vcn_id                   = var.vcn_id
+  public_route_table_display_name = var.pub_rt
+  private_route_table_display_name = var.priv_rt
   # vcn parameters
   create_drg               = var.create_drg
   drg_display_name         = var.drg_display_name

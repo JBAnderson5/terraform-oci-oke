@@ -12,6 +12,16 @@ variable "network_compartment_id" {
   type        = string
   default     = null
 }
+variable "pub_rt" {
+  description = "the display name of the public route table that's already been created"
+  type        = string
+  default     = null
+}
+variable "priv_rt" {
+  description = "the display name of the private route table that's already been created"
+  type        = string
+  default     = null
+}
 
 
 # Identity and access parameters
